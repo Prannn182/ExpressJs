@@ -9,6 +9,7 @@
     <script>
         async function testpost(){
             let a=await fetch("/", {method: "POST"})
+            //let a=await fetch("/",{method:"PUT"})
             let b=await a.text();
             console.log(b);
         }
