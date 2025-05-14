@@ -1,27 +1,16 @@
-const express = require("express");
-const app = express();
-const port = 5000;
-
-app.use(express.static('public'));
-
-app.get('/', (req, res) => {
-    res.send('Hello Worrrrrrrrrrrrrrld');
-});
-app.get('/about', (req, res) => {
-    res.send('Hello about me here');
-});
-app.get('/contact', (req, res) => {
-    res.send('Hello contact');
-});
-app.get('/about/:slug',(req,res)=>{
-    console.log(req);
-    console.log(req.params); //will output(pages)
-    console.log(req.query); //will output (modes vgrea)
-    
-    
-    res.send(`hello ${req.params.slug}`);
+const express=require("express");
+const app=express();
+const port=5000;
+app.set("view engine","ejs")
+app.get('/',(req,res)=>{
+    let sitename="Adidas";
+    let sitetext="search now";
+    let arr=[45,68.98]
+    res.render("index",{sitename:sitename,sitetext:sitetext,arr});//use to render a view template 
 })
-
-app.listen(port, () => {
-    console.log(`Example of port on ${port}`);
-});
+// app.post('/',(req,res)=>{
+//     res.send('Hello World! from post');
+// })
+app.listen(port,()=>{
+    console.log(`Server is running on port ${port}`);
+})
